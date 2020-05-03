@@ -1,0 +1,10 @@
+cd ../xplatform
+make -j32
+make install
+cd ../config_client
+make -j32
+make install
+cd ../xms_gateway
+make -j32
+make install
+

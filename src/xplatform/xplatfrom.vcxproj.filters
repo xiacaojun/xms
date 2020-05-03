@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="thread_pool">
+      <UniqueIdentifier>{d4b27b8e-9c3a-4fa4-820d-71dc037d540c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf">
+      <UniqueIdentifier>{6eed2bb8-a9e7-4475-bb8c-2dc5beb92f43}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="xtask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xtools.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xcom_task.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xmsg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xmsg_event.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xthread_pool.h">
+      <Filter>thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="xmsg_com.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="xmsg_type.pb.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="xservice_client.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xservice.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xservice_handle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xssl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xssl_ctx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="xthread.h">
+      <Filter>thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="xlog_client.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="xtools.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xcom_task.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xmsg_event.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xthread_pool.cpp">
+      <Filter>thread_pool</Filter>
+    </ClCompile>
+    <ClCompile Include="xmsg_com.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="xmsg_type.pb.cc">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="xservice_client.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xservice.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xservice_handle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xssl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xssl_ctx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="xthread.cpp">
+      <Filter>thread_pool</Filter>
+    </ClCompile>
+    <ClCompile Include="xlog_client.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build_msg.bat">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="xmsg_com.proto" />
+    <None Include="xmsg_type.proto" />
+  </ItemGroup>
+</Project>

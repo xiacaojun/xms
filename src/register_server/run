@@ -1,0 +1,7 @@
+cd ../xplatform
+make -j32
+make install
+cd ../register_server
+make -j32
+make install
+

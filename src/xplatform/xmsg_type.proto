@@ -1,0 +1,34 @@
+syntax="proto3";	//版本号
+package xmsg;		//命名空间
+
+enum MsgType
+{
+	NONE_DO_NOT_USE = 0;
+	MSG_LOGIN_REQ = 1;		//客户但端用户名和密码登陆请求 XLoginReq 不需要鉴定token
+	MSG_LOGIN_RES = 2;		//服务端响应回复消息 XLoginRes
+	MSG_DIR_REQ = 3;		//获取目录请求 XDirReq
+	MSG_DIR_RES = 4;		//目录列表响应 XDirRes
+	MSG_REGISTER_REQ = 5;	//注册服务请求 XRegisterReq
+	MSG_REGISTER_RES = 6;	//注册服务响应 XMessageRes
+	MSG_GET_SERVICE_REQ = 7;	//发现服务请求 XGetServiceReq
+	MSG_GET_SERVICE_RES = 8;	//发现服务响应 XServiceMap
+	MSG_SAVE_CONFIG_REQ = 9;	//配置中心的上传和下载   //XConfig
+	MSG_SAVE_CONFIG_RES = 10;	//XMessageRes
+	MSG_LOAD_CONFIG_REQ = 11;	//XLoadConfigReq
+	MSG_LOAD_CONFIG_RES = 12;	//XConfig
+	MSG_LOAD_ALL_CONFIG_REQ = 13;	//XLoadAllConfigReq
+	MSG_LOAD_ALL_CONFIG_RES = 14;	//XConfigList
+	MSG_DEL_CONFIG_REQ = 15;	//XLoadConfigReq
+	MSG_DEL_CONFIG_RES = 16;	//XMessageRes
+	MSG_ADD_USER_REQ = 17;		//XAddUserReq
+	MSG_ADD_USER_RES = 18;		//XMessageRes
+	MSG_CHANGE_PASSWORD_REQ = 19; //XChangePasswordReq
+	MSG_CHANGE_PASSWORD_RES = 208;//XMessageRes
+	MSG_CHECK_TOKEN_REQ = 209;//XMessageRes
+	MSG_CHECK_TOKEN_RES = 210;//XMessageRes
+	MSG_ADD_LOG_REQ = 211;		//添加日志  XAddLogReq 不做响应
+	MSG_GET_OUT_SERVICE_REQ = 65532;	// XGetServiceReq 获取外部微服务，只能获取is_find=true的微服务 XGetServiceReq
+	MSG_GET_OUT_SERVICE_RES = 65533;	// XServiceList
+	MSG_HEART_REQ = 65534;		//心跳
+	MSG_MAX_TYPE = 65535;	
+}
