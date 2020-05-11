@@ -1,127 +1,90 @@
-#ifndef LXDATA_H
-#define LXDATA_H
+#ifndef LXMYSQL_H
+#define LXMYSQL_H
 
-#ifdef STATIC
-#define LXAPI
-#else
-#ifdef _WIN32  //32 &64
-	#ifdef LXMYSQL_EXPORTS
-	//动态链接库项目调用
-	#define LXAPI  __declspec(dllexport)
-	#else
-	//执行程序调用
-	#define LXAPI  __declspec(dllimport)
-	#endif
-#else  //linux mac
-	#define LXAPI
-#endif
-#endif
+#include  <vector>
+#include  "LXData.h"
+#include <mysql.h>
+//struct MYSQL;
+//struct MYSQL_RES;
+namespace LX {
 
-#include <map>
-#include <string>
-#include <vector>
-#include <string.h>
-namespace LX 
-{
-	enum LX_OPT {
-		LX_OPT_CONNECT_TIMEOUT,
-		LX_OPT_COMPRESS,
-		LX_OPT_NAMED_PIPE,
-		LX_INIT_COMMAND,
-		LX_READ_DEFAULT_FILE,
-		LX_READ_DEFAULT_GROUP,
-		LX_SET_CHARSET_DIR,
-		LX_SET_CHARSET_NAME,
-		LX_OPT_LOCAL_INFILE,
-		LX_OPT_PROTOCOL,
-		LX_SHARED_MEMORY_BASE_NAME,
-		LX_OPT_READ_TIMEOUT,
-		LX_OPT_WRITE_TIMEOUT,
-		LX_OPT_USE_RESULT,
-		LX_REPORT_DATA_TRUNCATION,
-		LX_OPT_RECONNECT,
-		LX_PLUGIN_DIR,
-		LX_DEFAULT_AUTH,
-		LX_OPT_BIND,
-		LX_OPT_SSL_KEY,
-		LX_OPT_SSL_CERT,
-		LX_OPT_SSL_CA,
-		LX_OPT_SSL_CAPATH,
-		LX_OPT_SSL_CIPHER,
-		LX_OPT_SSL_CRL,
-		LX_OPT_SSL_CRLPATH,
-		LX_OPT_CONNECT_ATTR_RESET,
-		LX_OPT_CONNECT_ATTR_ADD,
-		LX_OPT_CONNECT_ATTR_DELETE,
-		LX_SERVER_PUBLIC_KEY,
-		LX_ENABLE_CLEARTEXT_PLUGIN,
-		LX_OPT_CAN_HANDLE_EXPIRED_PASSWORDS,
-		LX_OPT_MAX_ALLOWED_PACKET,
-		LX_OPT_NET_BUFFER_LENGTH,
-		LX_OPT_TLS_VERSION,
-		LX_OPT_SSL_MODE,
-		LX_OPT_GET_SERVER_PUBLIC_KEY,
-		LX_OPT_RETRY_COUNT,
-		LX_OPT_OPTIONAL_RESULTSET_METADATA,
-		LX_OPT_SSL_FIPS_MODE
-	};
- 
-	enum FIELD_TYPE {
-		LX_TYPE_DECIMAL,
-		LX_TYPE_TINY,
-		LX_TYPE_SHORT,
-		LX_TYPE_LONG,
-		LX_TYPE_FLOAT,
-		LX_TYPE_DOUBLE,
-		LX_TYPE_NULL,
-		LX_TYPE_TIMESTAMP,
-		LX_TYPE_LONGLONG,
-		LX_TYPE_INT24,
-		LX_TYPE_DATE,
-		LX_TYPE_TIME,
-		LX_TYPE_DATETIME,
-		LX_TYPE_YEAR,
-		LX_TYPE_NEWDATE, /**< Internal to MySQL. Not used in protocol */
-		LX_TYPE_VARCHAR,
-		LX_TYPE_BIT,
-		LX_TYPE_TIMESTAMP2,
-		LX_TYPE_DATETIME2, /**< Internal to MySQL. Not used in protocol */
-		LX_TYPE_TIME2,     /**< Internal to MySQL. Not used in protocol */
-		LX_TYPE_JSON = 245,
-		LX_TYPE_NEWDECIMAL = 246,
-		LX_TYPE_ENUM = 247,
-		LX_TYPE_SET = 248,
-		LX_TYPE_TINY_BLOB = 249,
-		LX_TYPE_MEDIUM_BLOB = 250,
-		LX_TYPE_LONG_BLOB = 251,
-		LX_TYPE_BLOB = 252,
-		LX_TYPE_VAR_STRING = 253,
-		LX_TYPE_STRING = 254,
-		LX_TYPE_GEOMETRY = 255
-	} ;
+    //所有函数都不能保证线程安全
+    class LXAPI LXMysql
+    {
+    public:
+        bool InputDBConfig();
+        int GetInsertID();
 
-	struct LXAPI LXData
-	{
-		LXData(const char* data=0);
-		LXData(const int *d);
-		//读取文件，内容写入到data，size大小 ,会在堆中申请data的空间，需要用Drop释放
-		bool LoadFile(const char* filename);
-		bool SaveFile(const char * filename);
-		const char * data = 0;
-		int size = 0;
-		FIELD_TYPE type;
-		//释放LoadFile申请的data空间
-		void Drop();
-		std::string UTF8ToGBK();
-		std::string GBKToUTF8();
+        //初始化Mysql API
+        bool Init();
 
-	};
+        //清理占用的所有资源
+        void Close();
 
-	//插入和更新数据的数据结构
-	typedef std::map <std::string, LXData> XDATA;
+        //数据库连接（不考虑线程安全） flag设置支持多条语句
+        bool Connect(const char*host, const char*user, const char*pass, const char*db, unsigned short port = 3306, unsigned long flag = 0);
 
-	//数据列表
-	typedef std::vector< std::vector<LXData> >XROWS;
+        //执行sql语句  if sqllen=0 strlen获取字符长度
+        bool Query(const char*sql, unsigned long sqllen = 0);
+
+        //Mysql参数的设定 Connect之前调用
+        bool Options(LX_OPT opt, const void *arg);
+
+        //连接超时时间
+        bool SetConnectTimeout(int sec);
+
+        //自动重连，默认不自动
+        bool SetReconnect(bool isre = true);
+
+        //结果集获取
+        //返回全部结果
+        bool StoreResult();
+
+        //开始接收结果，通过Fetch获取
+        bool UseResult();
+
+        //释放结果集占用的空间
+        void FreeResult();
+
+        //获取一行数据
+        std::vector<LXData> FetchRow();
+
+        //生成insert sql语句
+        std::string GetInsertSql(XDATA kv, std::string table);
+
+        //插入非二进制数据 字段名称前有@ 比如 @time ，其内容不加引号，一般用于调用功能函数
+        bool Insert(XDATA kv, std::string table);
+
+        //插入二进制数据
+        bool InsertBin(XDATA kv, std::string table);
+
+        //获取更新数据的sql语句 where语句中，用户要包含where
+        std::string GetUpdateSql(XDATA kv, std::string table, std::string where);
+        //返回更新数量，失败返回-1
+        int Update(XDATA kv, std::string table, std::string where);
+        int UpdateBin(XDATA kv, std::string table, std::string where);
+
+        //事务接口
+        bool StartTransaction();
+        bool StopTransaction();
+        bool Commit();
+        bool Rollback();
+
+        //简易接口,返回select的数据结果，每次调用清理上一次的结果集
+        XROWS GetResult(const char *sql);
+
+
+    protected:
+        //mysql上下文
+        MYSQL *mysql = 0;
+
+        //结果集
+        MYSQL_RES *result = 0;
+
+        //字段名称和类型
+        //std::vector<LXData> cols;
+    };
+
 }
 
 #endif
