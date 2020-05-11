@@ -3,7 +3,7 @@
 
 #include  <vector>
 #include  "LXData.h"
-#include <mysql.h>
+//#include <mysql.h>
 //struct MYSQL;
 //struct MYSQL_RES;
 namespace LX {
@@ -76,10 +76,10 @@ namespace LX {
 
     protected:
         //mysql上下文
-        MYSQL *mysql = 0;
+        void *mysql = 0;
 
         //结果集
-        MYSQL_RES *result = 0;
+        void *result = 0;
 
         //字段名称和类型
         //std::vector<LXData> cols;
