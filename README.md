@@ -1,136 +1,150 @@
 
-###  XMS Î¢·şÎñÏµÍ³°üº¬ API Íø¹Ø£¬ÈÕÖ¾·şÎñ£¬ÅäÖÃ·şÎñ£¬×¢²á·şÎñ£¬·şÎñ¹ÜÀíÖĞĞÄ£¬ Í¨ĞÅ×é¼ş SDK£¬Êı¾İ¿â¶ÁĞ´ SDK¡£ ³ıÁË SDK ÀàµÄÄ£¿éÆäËû¸÷Ä£¿éÓ¦¾ß±¸½øĞĞ¶ÀÁ¢¼¯Èº²¿ÊğµÄÄÜÁ¦¡£ XMS ÏµÍ³Ó¦Ìá¹© C/S µÄÏµÍ³¹ÜÀí½çÃæ£¬½øĞĞÅäÖÃ¹ÜÀí¡¢·şÎñ×´Ì¬¼à¿Ø¡¢ÈÕÖ¾²éÑ¯¹¦ÄÜ¡£ 
+###  XMS å¾®æœåŠ¡ç³»ç»ŸåŒ…å« API ç½‘å…³ï¼Œæ—¥å¿—æœåŠ¡ï¼Œé…ç½®æœåŠ¡ï¼Œæ³¨å†ŒæœåŠ¡ï¼ŒæœåŠ¡ç®¡ç†ä¸­å¿ƒï¼Œ é€šä¿¡ç»„ä»¶ SDKï¼Œæ•°æ®åº“è¯»å†™ SDKã€‚ é™¤äº† SDK ç±»çš„æ¨¡å—å…¶ä»–å„æ¨¡å—åº”å…·å¤‡è¿›è¡Œç‹¬ç«‹é›†ç¾¤éƒ¨ç½²çš„èƒ½åŠ›ã€‚ XMS ç³»ç»Ÿåº”æä¾› C/S çš„ç³»ç»Ÿç®¡ç†ç•Œé¢ï¼Œè¿›è¡Œé…ç½®ç®¡ç†ã€æœåŠ¡çŠ¶æ€ç›‘æ§ã€æ—¥å¿—æŸ¥è¯¢åŠŸèƒ½ã€‚ 
 
-# ÏîÄ¿²ÎÓëÈËÔ±ºÍ¹±Ï×
-## ÏÄ²Ü¿¡ 
+# é¡¹ç›®å‚ä¸äººå‘˜å’Œè´¡çŒ®
+## å¤æ›¹ä¿Š 
 
 <table border=1>
 <tr>
 <th>name</th>
-<th>¹±Ï×</th>
-<th>ÓÊÏä</th>
+<th>è´¡çŒ®</th>
+<th>é‚®ç®±</th>
 </tr>
 <tr>
 <td>
-ÏÄ²Ü¿¡
+å¤æ›¹ä¿Š
 </td>
 <td>
-1 ÏîÄ¿ÔËÎ¬<br>
-2 XPlatformÍ¨ĞÅ¿â¿ª·¢
+1 é¡¹ç›®è¿ç»´<br>
+2 XPlatformé€šä¿¡åº“å¼€å‘
 </td>
 <td>
 xiacaojun@qq.com
 </td>
 </tr>
+    
+    
+    <tr>
+<td>
+äºæµ·æ±Ÿ
+</td>
+<td>
+å‚ä¸xmserviceå¼€æºåº“å¼€å‘
+</td>
+<td>
+798737767@qq.com
+</td>
+</tr>
+
 </table>
 
 
 
-# Windows±àÒë»·¾³×¼±¸
-°²×°VS2017ÉçÇø°æ±¾ºÍQT5.9°æ±¾
-# Linux±àÒë»·¾³×¼±¸
+# Windowsç¼–è¯‘ç¯å¢ƒå‡†å¤‡
+å®‰è£…VS2017ç¤¾åŒºç‰ˆæœ¬å’ŒQT5.9ç‰ˆæœ¬
+# Linuxç¼–è¯‘ç¯å¢ƒå‡†å¤‡
 ubuntu 18.04.02 x64
-##?¹«¹²µÄ¹¤¾ß
+##?å…¬å…±çš„å·¥å…·
     apt-get?install?perl?g++?make?automake?libtool?unzip git
-# ÒÀÀµ¿â±àÒë°²×°
-## zlib£¨protobuf£¬libeventÒÀÀµ£©£¨Ñ¹Ëõ£©
+# ä¾èµ–åº“ç¼–è¯‘å®‰è£…
+## zlibï¼ˆprotobufï¼Œlibeventä¾èµ–ï¼‰ï¼ˆå‹ç¼©ï¼‰
     tar -xvf zlib-1.2.11.tar.gz
     cd zlib-1.2.11/
     ./configure
     make -j32
     make install
-    # °²×°ÔÚ /usr/local/include/ /usr/local/lib Ä¿Â¼ÏÂ
+    # å®‰è£…åœ¨ /usr/local/include/ /usr/local/lib ç›®å½•ä¸‹
 
-## openssl £¨libeventÒÀÀµ£©£¨°²È«¼ÓÃÜ£©
+## openssl ï¼ˆlibeventä¾èµ–ï¼‰ï¼ˆå®‰å…¨åŠ å¯†ï¼‰
     tar -xvf openssl-1.1.1.tar.gz
     cd openssl-1.1.1/
     ./config
     make -j32
     make install
-    # openssl ÃüÁîĞĞ /usr/local/bin
-    #ÅäÖÃ°²×°ÔÚ /usr/local/ssl 
-    #Í·ÎÄ¼ş/usr/local/include/openssl
-    #so¿âÎÄ¼ş/usr/local/lib
-## protobuf£¨Í¨ĞÅĞ­Òé£©
+    # openssl å‘½ä»¤è¡Œ /usr/local/bin
+    #é…ç½®å®‰è£…åœ¨ /usr/local/ssl 
+    #å¤´æ–‡ä»¶/usr/local/include/openssl
+    #soåº“æ–‡ä»¶/usr/local/lib
+## protobufï¼ˆé€šä¿¡åè®®ï¼‰
     unzip protobuf-all-3.8.0.zip
     cd protobuf-3.8.0/
     ./configure
     make -j32
     make install
-    #°²×°ÔÚ /usr/local/include/google/protobuf 
+    #å®‰è£…åœ¨ /usr/local/include/google/protobuf 
     # protoc /usr/local/bin
-    # so¿âÎÄ¼ş /usr/local/lib
-## libevent £¨ÍøÂçÍ¨ĞÅ£©
+    # soåº“æ–‡ä»¶ /usr/local/lib
+## libevent ï¼ˆç½‘ç»œé€šä¿¡ï¼‰
     unzip libevent-master.zip
     ./autogen.sh
     ./configure
     make -j32
     make install
-    #°²×°ÔÚ /usr/local/lib /usr/local/include
+    #å®‰è£…åœ¨ /usr/local/lib /usr/local/include
 
 
-# XMS ÏµÍ³°²×°
+# XMS ç³»ç»Ÿå®‰è£…
 
-## °²×°Êı¾İ¿â·şÎñÆ÷£¨Linux£©
-### °²×°Êı¾İ¿â¿Í»§¶Ë¿â
+## å®‰è£…æ•°æ®åº“æœåŠ¡å™¨ï¼ˆLinuxï¼‰
+### å®‰è£…æ•°æ®åº“å®¢æˆ·ç«¯åº“
     apt-get install libmysqlclient-dev
-### °²×°Êı¾İ¿â·şÎñ¶Ë
+### å®‰è£…æ•°æ®åº“æœåŠ¡ç«¯
     sudo apt-get install mysql-server
-### ÅäÖÃÓÃ»§ÃûÃÜÂë
-    /etc/mysql/debian.cnfÎÄ¼ş£¬ÔÚÕâ¸öÎÄ¼şÖĞÓĞÏµÍ³Ä¬ÈÏ¸øÎÒÃÇ·ÖÅäµÄÓÃ»§ÃûºÍÃÜÂë
+### é…ç½®ç”¨æˆ·åå¯†ç 
+    /etc/mysql/debian.cnfæ–‡ä»¶ï¼Œåœ¨è¿™ä¸ªæ–‡ä»¶ä¸­æœ‰ç³»ç»Ÿé»˜è®¤ç»™æˆ‘ä»¬åˆ†é…çš„ç”¨æˆ·åå’Œå¯†ç 
     mysql -u debian-sys-maint -p 
     set password for 'root'@'localhost' = password('123456')
-## LXMysql ¿â°²×°
+## LXMysql åº“å®‰è£…
     apt-get install libmysqlclient-dev
     cd /root/xms/src/LXMysql
     make -j32
     make install
-    # °²×°ÔÚ /usr/lib/libLXMysql.so
-## XPlatformÍ¨ĞÅ¿â°²×°
+    # å®‰è£…åœ¨ /usr/lib/libLXMysql.so
+## XPlatformé€šä¿¡åº“å®‰è£…
     cd ../xplatform
-    # Éú³Éproto¶ÔÓ¦µÄc++´úÂë
+    # ç”Ÿæˆprotoå¯¹åº”çš„c++ä»£ç 
     make proto  
     make -j32
     make install
-    # °²×°µ½ /usr/lib/libxcom.so
-## XRC×¢²áÖĞĞÄ°²×°
-ÒÀÀµXPlatform£¬²¢ÇÒ»áÁ¬½ÓXLOGÈÕÖ¾ÖĞĞÄ
-×¢²áÖĞĞÄ·şÎñ¶Ë°²×°
+    # å®‰è£…åˆ° /usr/lib/libxcom.so
+## XRCæ³¨å†Œä¸­å¿ƒå®‰è£…
+ä¾èµ–XPlatformï¼Œå¹¶ä¸”ä¼šè¿æ¥XLOGæ—¥å¿—ä¸­å¿ƒ
+æ³¨å†Œä¸­å¿ƒæœåŠ¡ç«¯å®‰è£…
     cd ../register_server
     make -j32
     make install
-## ×¢²áÖĞĞÄ¿Í»§¶Ë
+## æ³¨å†Œä¸­å¿ƒå®¢æˆ·ç«¯
     cd ../register_client
     make -j32
     make install
-## XLOGÈÕÖ¾ÖĞĞÄ°²×°
-    #ÒÀÀµXPlatform£¬LXMysql register_client »áÁ¬½ÓXRC×¢²áÎ¢·şÎñ
+## XLOGæ—¥å¿—ä¸­å¿ƒå®‰è£…
+    #ä¾èµ–XPlatformï¼ŒLXMysql register_client ä¼šè¿æ¥XRCæ³¨å†Œå¾®æœåŠ¡
     cd ../xlog/
     make -j32
     make install
-## XCCÅäÖÃÖĞĞÄ°²×°
-    # ÒÀÀµLXMysql xplatform register_client »áÁ¬½ÓXRC×¢²áÎ¢·şÎñ
-### ÅäÖÃÖĞĞÄÎ¢·şÎñ
+## XCCé…ç½®ä¸­å¿ƒå®‰è£…
+    # ä¾èµ–LXMysql xplatform register_client ä¼šè¿æ¥XRCæ³¨å†Œå¾®æœåŠ¡
+### é…ç½®ä¸­å¿ƒå¾®æœåŠ¡
     cd ../config_server
     make -j32
     make install
-### ÅäÖÃÖĞĞÄ¿Í»§¶Ë
+### é…ç½®ä¸­å¿ƒå®¢æˆ·ç«¯
     cd ../config_client
     make -j32
     make install
-## XAUTH ¼øÈ¨ÖĞĞÄ°²×°
-    # ÒÀÀµLXMysql xplatform register_client 
-    # Í¨¹ıregister_client Á¬½ÓXRC×¢²áÎ¢·şÎñ
-    # Í¨¹ı config_client »ñÈ¡ÅäÖÃ
+## XAUTH é‰´æƒä¸­å¿ƒå®‰è£…
+    # ä¾èµ–LXMysql xplatform register_client 
+    # é€šè¿‡register_client è¿æ¥XRCæ³¨å†Œå¾®æœåŠ¡
+    # é€šè¿‡ config_client è·å–é…ç½®
     cd ../xauth
-    # ±àÒëxauthÎ¢·şÎñ
+    # ç¼–è¯‘xauthå¾®æœåŠ¡
     make -j32  
-    # ±àÒëxauth¿Í»§¶Ë
+    # ç¼–è¯‘xauthå®¢æˆ·ç«¯
     make libxauth.so
     make install
-## XAGÍø¹Ø°²×°
-    # ÒÀÀµxplatform register_client config_client
-    # Í¨¹ıregister_client»ñÈ¡È«²¿¿ÉÓÃÎ¢·şÎñÁĞ±í
-    # Í¨¹ı config_client »ñÈ¡Íø¹ØÅäÖÃ
+## XAGç½‘å…³å®‰è£…
+    # ä¾èµ–xplatform register_client config_client
+    # é€šè¿‡register_clientè·å–å…¨éƒ¨å¯ç”¨å¾®æœåŠ¡åˆ—è¡¨
+    # é€šè¿‡ config_client è·å–ç½‘å…³é…ç½®
     make -j32
     make install
